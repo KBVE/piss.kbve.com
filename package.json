@@ -1,0 +1,48 @@
+{
+  "name": "my-qwik-basic-starter",
+  "description": "Recommended for your first Qwik app",
+  "engines": {
+    "node": ">=15.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "yarn build.client && yarn build.ssg && node server/entry.static.js && yarn build.fuckedPathing && yarn build.fuckedPathingServiceWorker && yarn build.move",
+    "build.ssg": "vite build --ssr src/entry.static.tsx",
+    "build.old": "qwik build",
+    "build.client": "vite build --base /piss/ --outDir /piss/",
+    "build.preview": "vite build src/entry.preview.tsx",
+    "build.types": "tsc --incremental --noEmit",
+    "build.fuckedPathing": "sed -i'' -e 's/href=\"\\/build/href=\"\\/piss\\/build/g' dist/index.html",
+    "build.fuckedPathingServiceWorker": "sed -i'' -e 's/\\/service/\\/piss\\/service/g' dist/index.html",
+    "build.move": "mv dist/* ../ && rm -rf dist/",
+    "dev": "vite --mode ssr",
+    "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "fmt": "prettier --write .",
+    "fmt.check": "prettier --check .",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "preview": "qwik build preview && vite preview --open",
+    "start": "vite --open --mode ssr",
+    "qwik": "qwik"
+  },
+  "devDependencies": {
+    "@builder.io/qwik": "0.9.0",
+    "@builder.io/qwik-city": "0.0.111",
+    "@types/eslint": "8.4.6",
+    "@types/node": "latest",
+    "@types/psl": "^1.1.0",
+    "@types/sha256": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "5.37.0",
+    "@typescript-eslint/parser": "5.37.0",
+    "eslint": "8.23.1",
+    "eslint-plugin-qwik": "0.9.0",
+    "node-fetch": "3.2.10",
+    "prettier": "2.7.1",
+    "typescript": "4.8.3",
+    "vite": "3.1.1",
+    "vite-tsconfig-paths": "3.5.0"
+  },
+  "dependencies": {
+    "psl": "^1.9.0",
+    "sha256": "^0.2.0"
+  }
+}

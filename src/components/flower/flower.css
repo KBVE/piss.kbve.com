@@ -1,0 +1,57 @@
+.host {
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  --rotation: 135deg;
+  --rotation: 225deg;
+  --size-step: 15px;
+  --odd-color-step: 6;
+  --even-color-step: 5;
+  --center: 12;
+
+  width: 100%;
+  height: 100%;
+
+  contain: strict;
+}
+
+input {
+  width: 100%;
+}
+
+.square {
+  --size: calc(90px + var(--index) * var(--size-step));
+
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  transform: rotateZ(calc(var(--rotation) * var(--state) * (var(--center) - var(--index))));
+  transition-property: transform, border-color;
+  transition-duration: 5s;
+  transition-timing-function: ease-in-out;
+  grid-area: 1 / 1;
+  background: rgb(52, 52, 52);
+  opacity: 0.2;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.72);
+  box-sizing: border-box;
+  will-change: transform, border-color;
+
+  contain: strict;
+}
+
+.square.odd {
+  --luminance: calc(1 - calc(calc(var(--index) * var(--odd-color-step)) / 256));
+  background: rgb(
+    calc(244 * var(--luminance)),
+    calc(244 * var(--luminance)),
+    calc(127 * var(--luminance))
+  );
+}
