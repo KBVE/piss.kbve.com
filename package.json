@@ -9,7 +9,7 @@
     "build": "yarn build.client && yarn build.ssg && node server/entry.static.js",
     "build.ssg": "vite build --ssr src/entry.static.tsx",
     "build.old": "qwik build",
-    "build.client": "vite build --base /piss/ --outDir /piss/",
+    "build.client": "vite build",
     "build.preview": "vite build src/entry.preview.tsx",
     "build.types": "tsc --incremental --noEmit",
     "build.fuckedPathing": "sed -i'' -e 's/href=\"\\/build/href=\"\\/piss\\/build/g' dist/index.html",
