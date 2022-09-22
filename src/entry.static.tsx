@@ -5,6 +5,6 @@ import { fileURLToPath } from 'url';
 import { join } from 'path';
 
 qwikCityGenerate(render, {
-  origin: 'https://piss.kbve.com/',
+  origin: 'https://piss.kbve.com',
   outDir: join(fileURLToPath(import.meta.url), '..', '..', 'dist'),
 });

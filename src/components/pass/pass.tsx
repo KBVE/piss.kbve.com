@@ -93,12 +93,12 @@ export default component$(() => {
             if (r_salt == null) {
               r_salt = getDomain(state?.domain);
             }
-            console.log(r_salt);
+            //console.log(r_salt);
             const password = state?.masterPass;
-            console.log(r_salt + password);
+            //console.log(r_salt + password);
             if (r_salt != null) {
               state.finalPass = sha256(r_salt + password);
-              console.log(state?.finalPass)
+              //console.log(state?.finalPass)
               state.tld = r_salt;
             }
             else {
