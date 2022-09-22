@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "yarn build.client && yarn build.ssg && node server/entry.static.js && yarn build.fuckedPathing && yarn build.fuckedPathingServiceWorker && yarn build.move",
+    "build": "yarn build.client && yarn build.ssg && node server/entry.static.js",
     "build.ssg": "vite build --ssr src/entry.static.tsx",
     "build.old": "qwik build",
     "build.client": "vite build --base /piss/ --outDir /piss/",
