@@ -30,12 +30,12 @@ export default component$(() => {
             class="edit"
             aria-labelledby='domain-label'
             placeholder='kbve.com'
-            value={state.domain}
+            value={state?.domain}
             onChange$={(event: any) => {
               state.domain = event.target.value
             }}
           />
-          <small>Domain TLD is used as the salt for the password. Salt: <b>{state.tld}</b></small>
+          <small>Domain TLD is used as the salt for the password. Salt: <b>{state?.tld ?? 'Empty'}</b></small>
         </div>
         <div class="input-container">
           <p style={{ margin: '0 !important' }} aria-label='master-pass-label'>Master Pass</p>
@@ -44,7 +44,7 @@ export default component$(() => {
             aria-labelledby='master-pass-label'
             placeholder='password123'
             type="password"
-            value={state.masterPass}
+            value={state?.masterPass}
             onChange$={(event: any) => {
               state.masterPass = event.target.value
             }}
@@ -56,7 +56,7 @@ export default component$(() => {
             class="edit"
             aria-labelledby='final-pass-label'
             placeholder='Final Password will Show Here'
-            value={state.finalPass}
+            value={state?.finalPass}
           />
         </div>
         <div class="input-container">
@@ -89,16 +89,16 @@ export default component$(() => {
               return domain;
             }
 
-            let r_salt = psl.get(state.domain);
+            let r_salt = psl.get(state?.domain);
             if (r_salt == null) {
-              r_salt = getDomain(state.domain);
+              r_salt = getDomain(state?.domain);
             }
             console.log(r_salt);
-            const password = state.masterPass;
+            const password = state?.masterPass;
             console.log(r_salt + password);
             if (r_salt != null) {
               state.finalPass = sha256(r_salt + password);
-              console.log(state.finalPass)
+              console.log(state?.finalPass)
               state.tld = r_salt;
             }
             else {
@@ -106,7 +106,7 @@ export default component$(() => {
               state.finalPass = 'ERROR'
             }
 
-          }}>Generate P{state.pissTracker}ss</button>
+          }}>Generate P{state?.pissTracker}ss</button>
         </div>
       </div>
     </>
